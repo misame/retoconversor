@@ -2,7 +2,7 @@
   <p align="center">Conversor</p>
 </h1>
 
-> **El desarrollo de este proyecto se realizado intentando aplicar lo aprendido  en el programa de programación orientada a objetos**
+> **El desarrollo de este proyecto se realizado intentando aplicar lo aprendido  en el programa de programación orientada a objetos dado por Alura Latam y OracleNextONE**
 
 >Fue creado usando JAVA JDK 17
 
