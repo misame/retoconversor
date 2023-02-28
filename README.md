@@ -2,7 +2,7 @@
   <p align="center">Conversor</p>
 </h1>
 
-> **El desarrollo de este proyecto se realizado intentando aplicar lo aprendido  en el programa de programación orientada a objetos dado por Alura Latam y OracleNextONE**
+> **El desarrollo de este proyecto se realizado intentando aplicar lo aprendido  en el programa de programación orientada a objetos dado por Alura Latam y OracleNextONE, aplicando herencia y para el manejo de los datos de conversion HashMap**
 
 >Fue creado usando JAVA JDK 17
 
