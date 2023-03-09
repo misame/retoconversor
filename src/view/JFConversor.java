@@ -1,20 +1,33 @@
-
 package view;
 
+import control.FiltroNumero;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 import model.Moneda;
 import model.Temperatura;
 import model.Tiempo;
 
-
+/**
+ *
+ * @author miguel
+ */
 public class JFConversor extends javax.swing.JFrame {
+
 
     public JFConversor() {
         initComponents();
+        DocumentFilter filtro = new FiltroNumero();
+        AbstractDocument moneda = (AbstractDocument) jTextMonto.getDocument();
+        moneda.setDocumentFilter(filtro);
+        AbstractDocument temperatura = (AbstractDocument) jTextCantidadInicial.getDocument();
+        temperatura.setDocumentFilter(filtro);
+        AbstractDocument tiempo = (AbstractDocument) jTTiempoInicial.getDocument();
+        tiempo.setDocumentFilter(filtro);
     }
-        private String convertidoDe;
-        private String convertidoA;
-        double cantidadInicial;
+    private String convertidoDe;
+    private String convertidoA;
+    double cantidadInicial;
 
     @SuppressWarnings("unchecked")
 
@@ -63,10 +76,12 @@ public class JFConversor extends javax.swing.JFrame {
 
         jComboBoxA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dolar USD", "Euro", "Libras Esterlinas", "Yen Japones", "Won surcoreano", "Sol" }));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel4.setText("Resultado:");
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        jTextResultado.setEditable(false);
+
+        jLabel5.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel5.setText("Monto:");
 
         jButtonCalcular.setText("Convertir");
@@ -80,10 +95,6 @@ public class JFConversor extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCalcular)
-                .addGap(197, 197, 197))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -99,23 +110,26 @@ public class JFConversor extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBoxA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))
+                        .addGap(47, 47, 47))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))))
+                        .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonCalcular)
+                        .addGap(201, 201, 201))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,17 +139,18 @@ public class JFConversor extends javax.swing.JFrame {
                     .addComponent(jComboBoxA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButtonCalcular)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPaneMoneda.addTab("Moneda", jPanel1);
 
+        jLabel1.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel1.setText("Temperatura:");
 
         jLabel6.setText("De:");
@@ -153,37 +168,42 @@ public class JFConversor extends javax.swing.JFrame {
             }
         });
 
+        jTextResultadoTemp.setEditable(false);
+
+        jLabel8.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel8.setText("Resultado:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jComboDe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jComboA, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextCantidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextCantidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jBConvertir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextResultadoTemp))
+                        .addComponent(jBConvertir)
                         .addGap(201, 201, 201))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jComboDe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(35, 35, 35)
+                .addComponent(jComboA, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextResultadoTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,23 +212,24 @@ public class JFConversor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextCantidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jComboA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(24, 24, 24)
                 .addComponent(jBConvertir)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextResultadoTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         jTabbedPaneMoneda.addTab("Temperatura", jPanel2);
 
+        jLabel9.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel9.setText("Tiempo:");
 
         jLabel10.setText("De:");
@@ -226,7 +247,10 @@ public class JFConversor extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Myanmar Text", 0, 20)); // NOI18N
         jLabel12.setText("Resultado:");
+
+        jTResultadoTiempo.setEditable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -238,49 +262,48 @@ public class JFConversor extends javax.swing.JFrame {
                         .addGap(148, 148, 148)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTTiempoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTTiempoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(jBConvertirTiempo))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCDeTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jCDeTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
                                 .addComponent(jLabel11)
                                 .addGap(18, 18, 18)
                                 .addComponent(jCATiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel12)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTResultadoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTTiempoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jCDeTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jCATiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(24, 24, 24)
                 .addComponent(jBConvertirTiempo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTResultadoTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPaneMoneda.addTab("Tiempo", jPanel3);
@@ -293,27 +316,27 @@ public class JFConversor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneMoneda)
+            .addComponent(jTabbedPaneMoneda, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }
 
-    private void jButtonCalcularMouseClicked(java.awt.event.MouseEvent evt) {
+    private void jButtonCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCalcularMouseClicked
         if (this.jTextMonto.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el monto", "Faltan datos", JOptionPane.WARNING_MESSAGE);
         }
         cambioMoneda();
     }
 
-    private void jBConvertirMouseClicked(java.awt.event.MouseEvent evt) {
+    private void jBConvertirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBConvertirMouseClicked
         if (this.jTextCantidadInicial.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la temperatura", "Faltan datos", JOptionPane.WARNING_MESSAGE);
         }
         cambioTemperatura();
     }
 
-    private void jBConvertirTiempoMouseClicked(java.awt.event.MouseEvent evt) {
+    private void jBConvertirTiempoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBConvertirTiempoMouseClicked
         if (this.jTTiempoInicial.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese el tiempo", "Faltan datos", JOptionPane.WARNING_MESSAGE);
         }
@@ -324,21 +347,22 @@ public class JFConversor extends javax.swing.JFrame {
         cantidadInicial = Double.parseDouble(this.jTextMonto.getText().toLowerCase().trim());
         convertidoDe = this.jComboBoxDe.getSelectedItem().toString();
         convertidoA = this.jComboBoxA.getSelectedItem().toString();
-        Moneda moneda = new Moneda(convertidoDe,convertidoA,cantidadInicial);
+        Moneda moneda = new Moneda(convertidoDe, convertidoA, cantidadInicial);
         moneda.cambioDeMoneda();
         this.jTextResultado.setText(String.valueOf(moneda.getResultado()));
+
     }
-    
-    private void cambioTemperatura(){
+
+    private void cambioTemperatura() {
         cantidadInicial = Double.parseDouble(this.jTextCantidadInicial.getText());
         convertidoDe = this.jComboDe.getSelectedItem().toString();
         convertidoA = this.jComboA.getSelectedItem().toString();
-        Temperatura t = new Temperatura(convertidoDe,convertidoA,cantidadInicial);
+        Temperatura t = new Temperatura(convertidoDe, convertidoA, cantidadInicial);
         t.temperaturaResultado();
         this.jTextResultadoTemp.setText(String.valueOf(t.getResultado()));
     }
-    
-    private void cambioTiempo(){
+
+    private void cambioTiempo() {
         cantidadInicial = Double.parseDouble(this.jTTiempoInicial.getText());
         convertidoDe = this.jCDeTiempo.getSelectedItem().toString();
         convertidoA = this.jCATiempo.getSelectedItem().toString();
@@ -347,8 +371,8 @@ public class JFConversor extends javax.swing.JFrame {
         this.jTResultadoTiempo.setText(String.valueOf(tiempo.getResultado()));
     }
 
-
     public static void main(String args[]) {
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -404,4 +428,5 @@ public class JFConversor extends javax.swing.JFrame {
     private javax.swing.JTextField jTextMonto;
     private javax.swing.JTextField jTextResultado;
     private javax.swing.JTextField jTextResultadoTemp;
+
 }
